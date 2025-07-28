@@ -1,19 +1,26 @@
-server:
-  port: 8081
-
 spring:
+  application:
+    name: user-service
+
+  config:
+    import: optional:configserver:http://localhost:8888/
+
   datasource:
     url: jdbc:postgresql://localhost:5432/UserService
     username: postgres
     password: 1
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-  application:
-    name: user-service
+  profiles:
+    active: default
+
+server:
+  port: 8081
 
 application:
   security:

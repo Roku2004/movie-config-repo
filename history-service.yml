@@ -9,6 +9,12 @@ spring:
   application:
     name: history-service
 
+  config:
+    import: optional:configserver:http://localhost:8888/
+
+  profiles:
+    active: default
+
 eureka:
   client:
     service-url:
